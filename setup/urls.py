@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from core.views import NoteViewSet
+from core.views import NoteViewSet, NotePostView
 
 router = DefaultRouter()
 router.register('note', NoteViewSet, basename='note')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(router.urls))
+    path('',include(router.urls)),
+    path('teste', NotePostView.as_view(), name='teste')
 ]
